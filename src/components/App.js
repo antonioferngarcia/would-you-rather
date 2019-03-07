@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Router } from "react-router";
+import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import createBrowserHistory from "history/createBrowserHistory";
 import { handleInitialData } from '../actions/shared'
 import Home from './Home'
 import LoadingBar from 'react-redux-loading'
@@ -10,26 +12,33 @@ import Nav from './Nav'
 import LoginPage from "./LoginPage";
 import LeaderBoard from "./LeaderBoard";
 
+const history = createBrowserHistory();
+
 class App extends Component {
+
   componentDidMount() {
     this.props.dispatch(handleInitialData())
   }
+
+  handleNavigation = (route) =>  history.push(route);
+
   render() {
     return (
-      <Router>
+      <Router history={history} >
         <Fragment>
           <LoadingBar />
           <div className='container'>
-            <Nav />
-            {this.props.loading === true
+            <Nav handleNavigation={this.handleNavigation}/>
+            {/*this.props.loading === true
               ? null
-              : <div>
-                  <Route path='/' exact component={Home} />
-                  <Route path='/login' exact component={LoginPage} />
-                  <Route path='/leaderboard' exact component={LeaderBoard} />
-                  <Route path='/questions/:questionId' component={QuestionPage} />
-                  <Route path='/add' component={NewQuestion} />
-                </div>}
+              : */}
+            <div>
+              <Route path='/' exact component={Home} />
+              <Route path='/login' exact component={LoginPage} />
+              <Route path='/leaderboard' exact component={LeaderBoard} />
+              <Route path='/questions/:questionId' component={QuestionPage} />
+              <Route path='/add' component={NewQuestion} />
+            </div>
           </div>
         </Fragment>
       </Router>
