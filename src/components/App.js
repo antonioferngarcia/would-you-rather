@@ -20,15 +20,13 @@ class App extends Component {
     this.props.dispatch(handleInitialData())
   }
 
-  handleNavigation = (route) =>  history.push(route);
-
   render() {
     return (
       <Router history={history} >
         <Fragment>
           <LoadingBar />
           <div className='container'>
-            <Nav handleNavigation={this.handleNavigation}/>
+            <Nav history={history}/>
             {/*this.props.loading === true
               ? null
               : */}
