@@ -20,7 +20,8 @@ class Nav  extends Component {
         linkTo: '/leaderboard'
       }
     ],
-    selectedTab: -1
+    selectedTab: 0
+    // selectedTab: -1
   };
 
   componentDidMount() {
@@ -63,7 +64,7 @@ class Nav  extends Component {
         onChange={this.handleChange}
         indicatorColor="primary"
         textColor="primary" >
-        {tabs.map(tab =>  <Tab key={tab.label} label={tab.label} />)}
+        {tabs.map(tab =>  <Tab key={tab.label} label={tab.label} />)}ma
       </Tabs>
     )
   }

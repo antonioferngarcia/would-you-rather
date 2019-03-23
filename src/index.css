@@ -11,9 +11,11 @@ a {
 }
 
 .container {
-  max-width: 1000px;
   margin: 0 auto;
   padding: 10px;
+}
+.routes-wrapper {
+  height: 100%;
 }
 
 .btn {
@@ -43,19 +45,69 @@ a {
   text-align: center;
 }
 
+.login-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-select-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.questions-list {
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.question-card {
+  margin: 20px;
+  cursor: pointer;
+}
+
+.text-wrapper {
+  padding: 15px;
+}
+
+.question-page {
+  max-width: 540px;
+  margin: 40px auto;
+}
+
+hr {
+  border: 1px solid #ddd;
+}
+
+.question-content {
+  display: flex;
+}
+
+.question-content .author {
+  width: 110px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.question-content .vertical-separator {
+  border: 1px solid #ddd;
+}
+
+.question-content .question-options {
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+  margin: 15px;
+}
+
 .active {
   font-weight: bold;
-}
-
-.nav ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  text-decoration: none;
-}
-
-.nav li:first-child {
-  padding-left: 0;
 }
 
 ul {

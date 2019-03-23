@@ -30,7 +30,7 @@ class App extends Component {
             {/*this.props.loading === true
               ? null
               : */}
-            <div>
+            <div className='routes-wrapper'>
               <Route path='/' exact component={Home} />
               <Route path='/login' exact component={LoginPage} />
               <Route path='/leaderboard' exact component={LeaderBoard} />
