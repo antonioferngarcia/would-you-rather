@@ -9,6 +9,7 @@ export function handleInitialData () {
     dispatch(showLoading());
     return getInitialData()
       .then(({ users, questions }) => {
+        // TODO: remove next line
         dispatch(setAuthedUser(users['tylermcginnis']));
         dispatch(receiveUsers(users));
         dispatch(receiveQuestions(questions));

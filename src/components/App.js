@@ -1,23 +1,30 @@
 import React, { Component, Fragment } from 'react'
+import { bindActionCreators } from "redux";
 import { Router } from "react-router";
 import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import propTypes from "prop-types";
+import LoadingBar from 'react-redux-loading'
+
 import createBrowserHistory from "history/createBrowserHistory";
 import { handleInitialData } from '../actions/shared'
-import Home from './Home'
-import LoadingBar from 'react-redux-loading'
 import NewQuestion from './NewQuestion'
 import QuestionPage from './QuestionPage'
-import Nav from './Nav'
-import LoginPage from "./LoginPage";
 import LeaderBoard from "./LeaderBoard";
+import LoginPage from "./LoginPage";
+import Home from './Home'
+import Nav from './Nav'
 
 const history = createBrowserHistory();
 
 class App extends Component {
+  static propTypes = {
+    handleInitialData: propTypes.func
+  };
 
   componentDidMount() {
-    this.props.dispatch(handleInitialData())
+    const { handleInitialData } = this.props;
+    handleInitialData()
   }
 
   render() {
@@ -25,11 +32,8 @@ class App extends Component {
       <Router history={history} >
         <Fragment>
           <LoadingBar />
+          <Nav history={history}/>
           <div className='container'>
-            <Nav history={history}/>
-            {/*this.props.loading === true
-              ? null
-              : */}
             <div className='routes-wrapper'>
               <Route path='/' exact component={Home} />
               <Route path='/login' exact component={LoginPage} />
@@ -44,10 +48,11 @@ class App extends Component {
   }
 }
 
-function mapStateToProps ({ authedUser }) {
+
+function mapDispatchToProps(dispatch) {
   return {
-    loading: authedUser === null
+    handleInitialData: bindActionCreators(handleInitialData, dispatch)
   }
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(null, mapDispatchToProps)(App)

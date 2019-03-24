@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 
 import { sendAnswer } from "../actions/questions";
 
-class QuestionPool extends Component {
+class QuestionPoll extends Component {
 
   state = {};
 
@@ -59,4 +59,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(QuestionPool)
+export default connect(null, mapDispatchToProps)(QuestionPoll)

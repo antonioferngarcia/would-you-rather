@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import Typography from "@material-ui/core/Typography";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import {FormControl, RadioGroup} from "@material-ui/core";
 import Radio from "@material-ui/core/Radio";

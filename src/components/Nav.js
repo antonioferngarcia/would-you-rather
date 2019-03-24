@@ -1,7 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { matchPath } from "react-router";
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import AppBar from "@material-ui/core/es/AppBar/AppBar";
+import Toolbar from "@material-ui/core/es/Toolbar/Toolbar";
+import IconButton from "@material-ui/core/es/IconButton/IconButton";
+import Menu from "@material-ui/core/es/Menu/Menu";
+import MenuItem from "@material-ui/core/es/MenuItem/MenuItem";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { setAuthedUser } from "../actions/authedUser";
 
 class Nav  extends Component {
 
@@ -33,7 +42,16 @@ class Nav  extends Component {
     const { tabs } = this.state;
     this.setState({ selectedTab });
     history.push(tabs[selectedTab].linkTo);
-    this.setSelectedTab();
+    this.setSelectedTab(null);
+  };
+
+  handleMenu = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleLogout = () => {
+    this.setState({ anchorEl: null });
+    this.props.setAuthedUser();
   };
 
   setSelectedTab = () => {
@@ -56,18 +74,66 @@ class Nav  extends Component {
   };
 
   render() {
-    const { selectedTab, tabs } = this.state;
+    const { selectedTab, tabs, anchorEl } = this.state;
+    const { authedUser } = this.props;
 
+    const auth = Boolean(authedUser);
+    const open = Boolean(anchorEl);
     return (
-      <Tabs
-        value={selectedTab}
-        onChange={this.handleChange}
-        indicatorColor="primary"
-        textColor="primary" >
-        {tabs.map(tab =>  <Tab key={tab.label} label={tab.label} />)}ma
-      </Tabs>
+      <Fragment>
+        <AppBar position="sticky" color='inherit'>
+          <Toolbar>
+            <Tabs
+              value={selectedTab}
+              onChange={this.handleChange}
+              indicatorColor="primary"
+              textColor="primary" >
+              {tabs.map(tab =>  <Tab key={tab.label} label={tab.label} />)}
+            </Tabs>
+            {auth && (
+              <div>
+                <IconButton
+                  onClick={this.handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={open}
+                  onClose={this.handleClose}
+                >
+                  <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
+                </Menu>
+              </div>
+            )}
+          </Toolbar>
+        </AppBar>
+      </Fragment>
     )
   }
 }
 
-export default Nav;
+
+function mapStateToProps ({ authedUser }) {
+  return {
+    authedUser
+  }
+}
+
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setAuthedUser: bindActionCreators(setAuthedUser, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)

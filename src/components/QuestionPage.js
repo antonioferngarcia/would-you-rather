@@ -4,7 +4,7 @@ import propTypes from 'prop-types'
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
-import QuestionPool from "./QuestionPool";
+import QuestionPoll from "./QuestionPoll";
 import QuestionResults from "./QuestionResults";
 
 
@@ -36,7 +36,7 @@ class QuestionPage extends Component {
               <div className='question-options'>
                 { isQuestionAnswered ?
                   <QuestionResults authedUser={authedUser.id} optionOne={question.optionOne} optionTwo={question.optionTwo}/> :
-                  <QuestionPool questionId={match.params.questionId} optionOne={question.optionOne} optionTwo={question.optionTwo}/>
+                  <QuestionPoll questionId={match.params.questionId} optionOne={question.optionOne} optionTwo={question.optionTwo}/>
                 }
               </div>
             </div>
