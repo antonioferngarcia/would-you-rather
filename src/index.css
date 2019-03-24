@@ -88,7 +88,8 @@ hr {
 }
 
 .question-content .author {
-  width: 110px;
+  min-width: 110px;
+  max-width: 140px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -104,6 +105,24 @@ hr {
   width: 100%;
   display: flex;
   margin: 15px;
+}
+
+.question-result {
+  padding: 15px 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  background-color: #eee;
+}
+
+.question-result.selected {
+  border: 1px solid limegreen;
+  background-color: #d0ecd0;
+}
+
+.selected-icon {
+  display: flex;
+  float: right;
 }
 
 .active {

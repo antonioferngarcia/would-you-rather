@@ -16,10 +16,8 @@ export function getInitialData () {
   }))
 }
 
-export function saveQuestion (info) {
-  return _saveQuestion(info)
-}
+export const getQuestions = () => _getQuestions();
 
-export function saveQuestionAnswer (info) {
-  return _saveQuestionAnswer(info)
-}
+export const saveQuestion = (info) => _saveQuestion(info);
+
+export const saveQuestionAnswer = (info) => _saveQuestionAnswer(info);
