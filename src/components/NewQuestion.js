@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 // import { Redirect } from 'react-router-dom'
 
 class NewQuestion extends Component {
@@ -20,8 +20,8 @@ class NewQuestion extends Component {
         <h3 className='center'>Compose new Question</h3>
 
       </div>
-    )
+    );
   }
 }
 
-export default connect()(NewQuestion)
+export default connect()(NewQuestion);

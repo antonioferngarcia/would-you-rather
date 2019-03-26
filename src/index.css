@@ -143,6 +143,27 @@ hr {
 
 .author-card .info-container {
   display: flex;
+  margin-top: 8px;
+}
+
+.questions-details {
+  width: 210px;
+  margin: 0 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.questions-detail {
+  display: flex;
+  justify-content: space-between;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 16px;
 }
 
 .first-position {
@@ -152,7 +173,7 @@ hr {
   padding: 5px;
   width: 20px;
   height: 20px;
-  margin: 9px 10px 0 0;
+  margin: 9px 0 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,7 +186,7 @@ hr {
   padding: 5px;
   width: 20px;
   height: 20px;
-  margin: 9px 10px 0 0;
+  margin: 9px 0 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,7 +199,7 @@ hr {
   padding: 5px;
   width: 20px;
   height: 20px;
-  margin: 9px 10px 0 0;
+  margin: 9px 0 0 0;
   display: flex;
   align-items: center;
   justify-content: center;

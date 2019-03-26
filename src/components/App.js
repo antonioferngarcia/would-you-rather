@@ -1,19 +1,19 @@
-import React, { Component, Fragment } from 'react'
-import { bindActionCreators } from "redux";
-import { Router } from "react-router";
-import { Route } from 'react-router-dom'
-import { connect } from 'react-redux'
-import propTypes from "prop-types";
-import LoadingBar from 'react-redux-loading'
+import React, { Component, Fragment } from 'react';
+import { bindActionCreators } from 'redux';
+import { Router } from 'react-router';
+import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
+import LoadingBar from 'react-redux-loading';
 
-import createBrowserHistory from "history/createBrowserHistory";
-import { handleInitialData } from '../actions/shared'
-import NewQuestion from './NewQuestion'
-import QuestionPage from './QuestionPage'
-import LeaderBoard from "./LeaderBoard";
-import LoginPage from "./LoginPage";
-import Home from './Home'
-import Nav from './Nav'
+import createBrowserHistory from 'history/createBrowserHistory';
+import { handleInitialData } from '../actions/shared';
+import NewQuestion from './NewQuestion';
+import QuestionPage from './QuestionPage';
+import LeaderBoard from './LeaderBoard';
+import LoginPage from './LoginPage';
+import Home from './Home';
+import Nav from './Nav';
 
 const history = createBrowserHistory();
 
@@ -24,7 +24,7 @@ class App extends Component {
 
   componentDidMount() {
     const { handleInitialData } = this.props;
-    handleInitialData()
+    handleInitialData();
   }
 
   render() {
@@ -44,15 +44,14 @@ class App extends Component {
           </div>
         </Fragment>
       </Router>
-    )
+    );
   }
 }
-
 
 function mapDispatchToProps(dispatch) {
   return {
     handleInitialData: bindActionCreators(handleInitialData, dispatch)
-  }
+  };
 }
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(null, mapDispatchToProps)(App);
