@@ -1,20 +1,20 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import propTypes from 'prop-types'
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Avatar from "@material-ui/core/Avatar";
-import QuestionPoll from "./QuestionPoll";
-import QuestionResults from "./QuestionResults";
-
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import QuestionPoll from './QuestionPoll';
+import QuestionResults from './QuestionResults';
 
 class QuestionPage extends Component {
 
   static propTypes = {
-    question: propTypes.object,
-    author: propTypes.object,
-    isQuestionAnswered: propTypes.bool,
-    authedUser: propTypes.object
+    question: PropTypes.object,
+    author: PropTypes.object,
+    isQuestionAnswered: PropTypes.bool,
+    authedUser: PropTypes.object,
+    match: PropTypes.object
   };
 
   render() {
@@ -43,11 +43,11 @@ class QuestionPage extends Component {
           </div>
         </Paper>
       </div>
-    )
+    );
   }
 }
 
-function mapStateToProps (state, props) {
+function mapStateToProps(state, props) {
   let author;
   let isQuestionAnswered = false;
   const question = state.questions[props.match.params.questionId];
@@ -60,7 +60,7 @@ function mapStateToProps (state, props) {
     author,
     isQuestionAnswered,
     authedUser: state.authedUser
-  }
+  };
 }
 
-export default connect(mapStateToProps)(QuestionPage)
+export default connect(mapStateToProps)(QuestionPage);

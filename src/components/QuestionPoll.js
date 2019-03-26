@@ -1,16 +1,24 @@
 import React, { Component, Fragment } from 'react';
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControl from "@material-ui/core/FormControl";
-import Radio from "@material-ui/core/Radio";
-import FormLabel from "@material-ui/core/FormLabel";
-import Button from "@material-ui/core/Button";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControl from '@material-ui/core/FormControl';
+import Radio from '@material-ui/core/Radio';
+import FormLabel from '@material-ui/core/FormLabel';
+import Button from '@material-ui/core/Button';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import { sendAnswer } from "../actions/questions";
+import { sendAnswer } from '../actions/questions';
 
 class QuestionPoll extends Component {
+
+  static propTypes = {
+    optionOne: PropTypes.object,
+    optionTwo: PropTypes.object,
+    sendAnswer: PropTypes.func,
+    questionId: PropTypes.string,
+  };
 
   state = {};
 
@@ -52,11 +60,10 @@ class QuestionPoll extends Component {
   }
 }
 
-
 function mapDispatchToProps(dispatch) {
   return {
     sendAnswer: bindActionCreators(sendAnswer, dispatch)
-  }
+  };
 }
 
-export default connect(null, mapDispatchToProps)(QuestionPoll)
+export default connect(null, mapDispatchToProps)(QuestionPoll);

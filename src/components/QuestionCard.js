@@ -1,24 +1,26 @@
 import React, { Component, Fragment } from 'react';
-import propTypes from 'prop-types'
-import Paper from "@material-ui/core/Paper";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
-
+import PropTypes from 'prop-types';
+import Paper from '@material-ui/core/Paper';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemText from '@material-ui/core/ListItemText';
+import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
 
 class QuestionCard extends Component {
 
   static propTypes = {
-    question: propTypes.object,
-    author: propTypes.object,
+    question: PropTypes.object,
+    author: PropTypes.object,
+    authedUser: PropTypes.object,
+    filterValue: PropTypes.string,
+    handleCardClick: PropTypes.func,
   };
 
   renderSelectedOption = (question) => {
     const { authedUser } = this.props;
     let option = question.optionTwo;
-    if(question.optionOne.votes.includes(authedUser.id)){
+    if(question.optionOne.votes.includes(authedUser.id)) {
       option = question.optionOne;
     }
     return (

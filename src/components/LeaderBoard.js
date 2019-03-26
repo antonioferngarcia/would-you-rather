@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import ListItem from '@material-ui/core/ListItem';
@@ -11,7 +11,7 @@ import Avatar from '@material-ui/core/Avatar';
 class LeaderBoard extends Component {
 
   static propTypes = {
-    authors: propTypes.object
+    authors: PropTypes.array
   };
 
   renderPosition = (position) => {
@@ -22,6 +22,8 @@ class LeaderBoard extends Component {
         return <div className='second-position'>2nd</div>;
       case 2:
         return  <div className='third-position'>3rd</div>;
+      default:
+        return  null;
     }
   };
 

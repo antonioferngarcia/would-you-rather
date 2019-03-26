@@ -1,6 +1,6 @@
-import { RECEIVE_QUESTIONS, ADD_QUESTION } from '../actions/questions'
+import { RECEIVE_QUESTIONS, ADD_QUESTION } from '../actions/questions';
 
-export default function questions (state = {}, action) {
+export default function questions(state = {}, action) {
   switch(action.type) {
     case RECEIVE_QUESTIONS :
       return {
@@ -13,6 +13,6 @@ export default function questions (state = {}, action) {
         [action.question.id]: action.question
       };
     default :
-      return state
+      return state;
   }
 }

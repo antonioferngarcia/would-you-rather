@@ -1,18 +1,26 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment } from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { matchPath } from "react-router";
+import { matchPath } from 'react-router';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import AppBar from "@material-ui/core/es/AppBar/AppBar";
-import Toolbar from "@material-ui/core/es/Toolbar/Toolbar";
-import IconButton from "@material-ui/core/es/IconButton/IconButton";
-import Menu from "@material-ui/core/es/Menu/Menu";
-import MenuItem from "@material-ui/core/es/MenuItem/MenuItem";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { setAuthedUser } from "../actions/authedUser";
+import AppBar from '@material-ui/core/es/AppBar/AppBar';
+import Toolbar from '@material-ui/core/es/Toolbar/Toolbar';
+import IconButton from '@material-ui/core/es/IconButton/IconButton';
+import Menu from '@material-ui/core/es/Menu/Menu';
+import MenuItem from '@material-ui/core/es/MenuItem/MenuItem';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import { setAuthedUser } from '../actions/authedUser';
 
 class Nav  extends Component {
+
+  static propTypes = {
+    history: PropTypes.object,
+    setAuthedUser: PropTypes.func,
+    authedUser: PropTypes.object
+  };
 
   state = {
     tabs: [
@@ -50,8 +58,9 @@ class Nav  extends Component {
   };
 
   handleLogout = () => {
+    const { setAuthedUser } = this.props;
     this.setState({ anchorEl: null });
-    this.props.setAuthedUser();
+    setAuthedUser();
   };
 
   setSelectedTab = () => {
@@ -62,7 +71,7 @@ class Nav  extends Component {
       if(match && match.isExact) {
         this.setState({ selectedTab: index });
       }
-    })
+    });
   };
 
   matchRoute = (path) => {
@@ -118,22 +127,20 @@ class Nav  extends Component {
           </Toolbar>
         </AppBar>
       </Fragment>
-    )
+    );
   }
 }
 
-
-function mapStateToProps ({ authedUser }) {
+function mapStateToProps({ authedUser }) {
   return {
     authedUser
-  }
+  };
 }
-
 
 function mapDispatchToProps(dispatch) {
   return {
     setAuthedUser: bindActionCreators(setAuthedUser, dispatch)
-  }
+  };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav)
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

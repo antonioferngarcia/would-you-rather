@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react'
-import { connect } from 'react-redux'
-import {bindActionCreators} from "redux";
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -10,7 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 
-import { setAuthedUser } from "../actions/authedUser";
+import { setAuthedUser } from '../actions/authedUser';
 
 class Login extends Component {
   state = {
@@ -104,20 +104,20 @@ class Login extends Component {
           {selectedUser && this.renderLoginButton()}
         </div>
       </div>
-    )
+    );
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     users: state.users
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     setAuthedUser: bindActionCreators(setAuthedUser, dispatch)
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
