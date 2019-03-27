@@ -38,7 +38,6 @@ class Nav  extends Component {
         linkTo: '/leaderboard'
       }
     ],
-    // selectedTab: 0
     selectedTab: -1
   };
 

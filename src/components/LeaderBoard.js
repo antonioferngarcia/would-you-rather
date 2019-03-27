@@ -83,9 +83,11 @@ function mapStateToProps(state) {
       .map(user => {
         user.questions = Object.values(state.questions)
           .filter(question => question.author === user.id);
-        user.votes = user.questions
-          .map(question => question.optionOne.votes.concat(question.optionTwo.votes))
-          .flat();
+        user.votes = Object.values(state.questions)
+          .filter(question =>
+            question.optionOne.votes.includes(user.id) ||
+            question.optionTwo.votes.includes(user.id)
+          );
         user.score = user.questions.length + user.votes.length;
         return user;
       })

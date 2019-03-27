@@ -13,12 +13,14 @@ class NewQuestion extends Component {
 
   static propTypes = {
     sendQuestion: PropTypes.func,
-    author: PropTypes.string
+    author: PropTypes.string,
+    history: PropTypes.object
   };
 
   state = {
     optionOne: '',
     optionTwo: '',
+    disabled: false
   };
 
   handleChange = name => event => {
@@ -27,19 +29,22 @@ class NewQuestion extends Component {
     });
   };
 
-  handleNewQuestion = () => {
+  handleNewQuestion = async() => {
     const { optionOne, optionTwo } = this.state;
-    const { sendQuestion, author } = this.props;
+    const { sendQuestion, author, history } = this.props;
 
-    sendQuestion({
+    this.setState({ disabled : true });
+    await sendQuestion({
       optionOneText: optionOne,
       optionTwoText: optionTwo,
       author
     });
+
+    history.push('/');
   };
 
   render() {
-    const { optionOne, optionTwo } = this.state;
+    const { optionOne, optionTwo, disabled } = this.state;
 
     return (
       <div className='new-question-container'>
@@ -70,6 +75,7 @@ class NewQuestion extends Component {
                   <Button
                     disabled={!optionOne.length && !optionTwo.length}
                     variant="outlined"
+                    disabled={disabled}
                     size="large" color="primary"
                     onClick={this.handleNewQuestion}>
                     Submit
