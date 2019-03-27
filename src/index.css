@@ -41,6 +41,14 @@ a {
   border-width: 2px;
 }
 
+/*------------------------------------nav-bar----------------------------------------*/
+.authed-user {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 /*----------------------------------login-page---------------------------------------*/
 .login-page-wrapper {
   display: flex;
@@ -231,6 +239,15 @@ hr {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/*----------------------------------------not-found--------------------------------------*/
+
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px auto;
 }
 
 .active {

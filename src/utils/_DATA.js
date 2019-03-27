@@ -2,7 +2,7 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: 'https://cdn.pixabay.com/photo/2014/03/24/17/19/teacher-295387__340.png',
+    avatarURL: 'https://pbs.twimg.com/profile_images/1099384716170452992/Z_2ELEQp_400x400.jpg',
     answers: {
       '8xf0y6ziyjabvozdd253nd': 'optionOne',
       '6ni6ok3ym7mf1p33lnez': 'optionTwo',
@@ -14,7 +14,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: 'https://cdn.pixabay.com/photo/2014/04/03/11/56/manager-312603__340.png',
+    avatarURL: 'https://pbs.twimg.com/profile_images/803732106513743872/o-JoI9g7_400x400.jpg',
     answers: {
       vthrdm985a262al8qx3do: 'optionOne',
       xj352vofupe1dqz9emx13r: 'optionTwo',

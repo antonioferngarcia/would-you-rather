@@ -16,7 +16,7 @@ class Home extends Component {
     history: PropTypes.object,
   };
 
-  state = { filterValue: 'answered' };
+  state = { filterValue: 'unanswered' };
 
   handleCardClick = question => {
     const { history } = this.props;
@@ -41,7 +41,7 @@ class Home extends Component {
             value={filterValue}
             onChange={this.toggleQuestionFilter}>
             <FormControlLabel value="answered" control={<Radio />} label="Answered questions" />
-            <FormControlLabel value="notAnswered" control={<Radio />} label="Not answered questions" />
+            <FormControlLabel value="unanswered" control={<Radio />} label="Not answered questions" />
           </RadioGroup>
         </FormControl>
         <ul className='dashboard-list'>

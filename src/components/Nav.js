@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { setAuthedUser } from '../actions/authedUser';
+import Typography from '@material-ui/core/Typography';
 
 class Nav  extends Component {
 
@@ -37,8 +38,8 @@ class Nav  extends Component {
         linkTo: '/leaderboard'
       }
     ],
-    selectedTab: 0
-    // selectedTab: -1
+    // selectedTab: 0
+    selectedTab: -1
   };
 
   componentDidMount() {
@@ -100,11 +101,9 @@ class Nav  extends Component {
               {tabs.map(tab =>  <Tab key={tab.label} label={tab.label} />)}
             </Tabs>
             {auth && (
-              <div>
-                <IconButton
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
+              <div className='authed-user'>
+                <Typography>Hello {authedUser.name}!</Typography>
+                <IconButton onClick={this.handleMenu} color='primary'>
                   <AccountCircle />
                 </IconButton>
                 <Menu

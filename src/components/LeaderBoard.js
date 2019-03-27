@@ -30,7 +30,6 @@ class LeaderBoard extends Component {
   render() {
     const { authors } = this.props;
 
-    console.log(authors);
     return (
       <div className='leaderboard-container'>
         <Typography variant="h3">LeaderBoard</Typography>
