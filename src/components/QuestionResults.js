@@ -9,7 +9,7 @@ class QuestionResults extends Component {
   static propTypes = {
     optionOne: PropTypes.object,
     optionTwo: PropTypes.object,
-    authedUser: PropTypes.object
+    authedUser: PropTypes.string
   };
 
   isOptionSelected = (option) => {

@@ -5,6 +5,7 @@ import { FormControl, RadioGroup } from '@material-ui/core';
 import Radio from '@material-ui/core/Radio';
 import QuestionCard from './QuestionCard';
 import PropTypes from 'prop-types';
+import Typography from '@material-ui/core/Typography';
 
 class Home extends Component {
 
@@ -33,8 +34,8 @@ class Home extends Component {
     const questions = filterValue === 'answered' ? questionsAnswered : questionsNotAnswered;
 
     return (
-      <div>
-        <h3 className='center'>List of questions</h3>
+      <div className='home-container'>
+        <Typography variant="h3">List of questions</Typography>
         <FormControl component="fieldset">
           <RadioGroup
             row

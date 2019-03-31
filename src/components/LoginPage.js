@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -8,11 +9,19 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 
 import { setAuthedUser } from '../actions/authedUser';
 
 class Login extends Component {
+
+  static propTypes = {
+    users: PropTypes.object,
+    setAuthedUser: PropTypes.func,
+    history: PropTypes.object,
+  };
+
   state = {
     anchorEl: null,
     selectedUser: null
@@ -64,7 +73,7 @@ class Login extends Component {
         variant="outlined"
         size="large" color="primary"
         onClick={this.handleLoginClick}>
-        LoginUser
+        Login User
       </Button>
     );
   };
@@ -85,8 +94,8 @@ class Login extends Component {
     const { anchorEl, selectedUser } = this.state;
 
     return (
-      <div>
-        <h3 className='center'>Login</h3>
+      <div className='login-container'>
+        <Typography variant="h3">Login</Typography>
         <div className='login-select-wrapper'>
           {selectedUser ? this.renderSelectedUser(selectedUser) : this.renderButton()}
           <Menu

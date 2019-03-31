@@ -73,9 +73,8 @@ class NewQuestion extends Component {
                     />
                   </div>
                   <Button
-                    disabled={!optionOne.length && !optionTwo.length}
+                    disabled={(!optionOne.length && !optionTwo.length) || disabled}
                     variant="outlined"
-                    disabled={disabled}
                     size="large" color="primary"
                     onClick={this.handleNewQuestion}>
                     Submit

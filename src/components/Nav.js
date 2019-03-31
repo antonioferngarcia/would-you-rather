@@ -2,25 +2,16 @@ import React, { Component, Fragment } from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { matchPath } from 'react-router';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import AppBar from '@material-ui/core/es/AppBar/AppBar';
 import Toolbar from '@material-ui/core/es/Toolbar/Toolbar';
-import IconButton from '@material-ui/core/es/IconButton/IconButton';
-import Menu from '@material-ui/core/es/Menu/Menu';
-import MenuItem from '@material-ui/core/es/MenuItem/MenuItem';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { setAuthedUser } from '../actions/authedUser';
-import Typography from '@material-ui/core/Typography';
+import UserLoggedMenu from './UserLoggedMenu';
 
 class Nav  extends Component {
 
   static propTypes = {
-    history: PropTypes.object,
-    setAuthedUser: PropTypes.func,
-    authedUser: PropTypes.object
+    history: PropTypes.object
   };
 
   state = {
@@ -53,16 +44,6 @@ class Nav  extends Component {
     this.setSelectedTab(null);
   };
 
-  handleMenu = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleLogout = () => {
-    const { setAuthedUser } = this.props;
-    this.setState({ anchorEl: null });
-    setAuthedUser();
-  };
-
   setSelectedTab = () => {
     const { tabs } = this.state;
 
@@ -83,11 +64,7 @@ class Nav  extends Component {
   };
 
   render() {
-    const { selectedTab, tabs, anchorEl } = this.state;
-    const { authedUser } = this.props;
-
-    const auth = Boolean(authedUser);
-    const open = Boolean(anchorEl);
+    const { selectedTab, tabs } = this.state;
     return (
       <Fragment>
         <AppBar position="sticky" color='inherit'>
@@ -99,29 +76,7 @@ class Nav  extends Component {
               textColor="primary" >
               {tabs.map(tab =>  <Tab key={tab.label} label={tab.label} />)}
             </Tabs>
-            {auth && (
-              <div className='authed-user'>
-                <Typography>Hello {authedUser.name}!</Typography>
-                <IconButton onClick={this.handleMenu} color='primary'>
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
-                </Menu>
-              </div>
-            )}
+            <UserLoggedMenu/>
           </Toolbar>
         </AppBar>
       </Fragment>
@@ -129,16 +84,4 @@ class Nav  extends Component {
   }
 }
 
-function mapStateToProps({ authedUser }) {
-  return {
-    authedUser
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    setAuthedUser: bindActionCreators(setAuthedUser, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+export default Nav;

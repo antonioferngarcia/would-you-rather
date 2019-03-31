@@ -50,6 +50,14 @@ a {
 }
 
 /*----------------------------------login-page---------------------------------------*/
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+}
+
 .login-page-wrapper {
   display: flex;
   flex-direction: column;
@@ -58,11 +66,22 @@ a {
 
 .login-select-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding-top: 100px;
+  flex-direction: column;
+  height: 150px;
+
 }
 
 /*----------------------------------question-list---------------------------------------*/
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+}
+
 .questions-list {
   display: flex;
   max-width: 100%;
