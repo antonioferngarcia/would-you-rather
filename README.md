@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Would you rather App
 
-This project is the second project of the Udacity's React nano-degree and the pourpose of this project is to learn how to develop a realistic React/Redux app.
+This project is the second project of the Udacity's React nano-degree and the pourpose of this project is to learn how to develop a realistic React/Redux app. User interface is developed using the material-ui library that provides react components following the material design guides.
 
 ## Available Scripts
 
