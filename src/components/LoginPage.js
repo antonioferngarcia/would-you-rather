@@ -20,6 +20,7 @@ class Login extends Component {
     users: PropTypes.object,
     setAuthedUser: PropTypes.func,
     history: PropTypes.object,
+    location:PropTypes.object
   };
 
   state = {
@@ -62,9 +63,10 @@ class Login extends Component {
   };
 
   handleLoginClick = () => {
-    const { setAuthedUser, history } = this.props;
+    const { setAuthedUser, history, location } = this.props;
+    const from = location.state ? location.state.from : { pathname: '/' };
     setAuthedUser(this.state.selectedUser);
-    history.push('/');
+    history.push(from.pathname);
   };
 
   renderLoginButton = () => {

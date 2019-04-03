@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
@@ -20,7 +21,7 @@ class QuestionPage extends Component {
   render() {
     const { question, author, isQuestionAnswered, match, authedUser } = this.props;
 
-    if(!question) return <div/>;
+    if(!question) return <Redirect to={{ pathname: '/error' }} />;
     return (
       <div className='question-page'>
         <Paper elevation={4}>
