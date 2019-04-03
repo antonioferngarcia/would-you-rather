@@ -1,5 +1,6 @@
 import { getQuestions, saveQuestion, saveQuestionAnswer } from '../utils/api';
 import { showLoading, hideLoading } from 'react-redux-loading';
+import { addAnswerToUser, addQuestionToUser } from './users';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
@@ -23,16 +24,23 @@ export function sendAnswer(questionId, answer) {
     dispatch(showLoading());
     const authedUser = getState().authedUser;
     await saveQuestionAnswer({ authedUser: authedUser.id, qid: questionId, answer })
-      .then(async() => dispatch(receiveQuestions(await getQuestions())));
+      .then(async() => {
+        dispatch(receiveQuestions(await getQuestions()));
+        dispatch(addAnswerToUser(authedUser.id, questionId, answer));
+      });
     dispatch(hideLoading());
   };
 }
 
 export function sendQuestion(question) {
-  return async(dispatch) => {
+  return async(dispatch, getState) => {
     dispatch(showLoading());
     await saveQuestion(question)
-      .then(savedQuestion => dispatch(addQuestion(savedQuestion)));
+      .then(savedQuestion => {
+        dispatch(addQuestion(savedQuestion));
+        const authedUser = getState().authedUser.id;
+        dispatch(addQuestionToUser(authedUser, savedQuestion.id));
+      });
     dispatch(hideLoading());
   };
 }

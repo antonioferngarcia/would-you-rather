@@ -46,7 +46,7 @@ class AuthorCard extends Component {
               <div className='questions-details'>
                 <div className='questions-detail'>
                   <Typography variant="h6">Answered questions</Typography>
-                  <Typography variant="h5" color="primary">{author.votes.length}</Typography>
+                  <Typography variant="h5" color="primary">{author.answers.length}</Typography>
                 </div>
                 <div className='questions-detail'>
                   <Typography variant="h6">Created questions</Typography>

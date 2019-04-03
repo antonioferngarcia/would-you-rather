@@ -29,7 +29,6 @@ class QuestionPoll extends Component {
   sendVote = () => {
     const { sendAnswer, questionId } = this.props;
     const { selectedOption } = this.state;
-    console.log('send vote', selectedOption);
     sendAnswer(questionId, selectedOption);
   };
 
